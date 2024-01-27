@@ -35,6 +35,7 @@ namespace PlanificadorAPI
         //Tarea que se ejecutara
         public void EjecutarTarea(object state)
         {
+
             List<string> datos = null;
             if(!_memoryCache.TryGetValue("data", out datos))
             {
@@ -43,6 +44,27 @@ namespace PlanificadorAPI
             Random random = new Random();
             datos.Add($"nombre{random.Next(1000)}");
             _memoryCache.Set("data", datos);
+            try
+            {
+
+                int a = random.Next(10);
+                if (a == 5)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    Console.WriteLine(a);
+                }
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("entro");
+              
+            }
+
+
         }
 
         //Metodo para obtener los datos
